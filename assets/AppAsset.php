@@ -20,9 +20,35 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/site.css',
+ 
+      "frontasset/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css",    
+        "frontasset/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css",       
+       "frontasset/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css",
+        "frontasset/css/bootstrap.min.css",
+       "frontasset/css/icons.min.css",
+       "frontasset/css/app.min.css",
+                       
     ];
     public $js = [
+   "frontasset/libs/jquery/jquery.min.js",
+   "frontasset/libs/bootstrap/js/bootstrap.bundle.min.js",
+   "frontasset/libs/metismenu/metisMenu.min.js",
+   "frontasset/libs/simplebar/simplebar.min.js",
+   "frontasset/libs/node-waves/waves.min.js",
+   "frontasset/libs/apexcharts/apexcharts.min.js",
+   "frontasset/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js",
+   "frontasset/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-us-merc-en.js",
+   "frontasset/libs/datatables.net/js/jquery.dataTables.min.js",
+   "frontasset/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js",
+   "frontasset/libs/datatables.net-responsive/js/dataTables.responsive.min.js",
+   "frontasset/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js",
+   "frontasset/js/app.js",
+
+
+
+
+
+  
     ];
     public $depends = [
         'yii\web\YiiAsset',

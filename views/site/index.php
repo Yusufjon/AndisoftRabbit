@@ -4,50 +4,106 @@
 
 $this->title = 'My Yii Application';
 ?>
-<div class="site-index">
+ <div class="main-content">
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
+<div class="page-content">
+    <div class="container-fluid">
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
-
-    <div class="body-content">
-
+        <!-- start page title -->
         <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0">Dashboard</h4>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Nazox</a></li>
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                    </div>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
+                </div>
             </div>
         </div>
+        <!-- end page title -->
 
-    </div>
+
+        <div class="row">
+            <div class="col-xl-8">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="media">
+                                    <div class="media-body overflow-hidden">
+                                        <p class="text-truncate font-size-14 mb-2">Number of Sales</p>
+                                        <h4 class="mb-0">1452</h4>
+                                    </div>
+                                    <div class="text-primary">
+                                        <i class="ri-stack-line font-size-24"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-body border-top py-3">
+                                <div class="text-truncate">
+                                    <span class="badge badge-soft-success font-size-11"><i class="mdi mdi-menu-up"> </i> 2.4% </span>
+                                    <span class="text-muted ml-2">From previous period</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="media">
+                                    <div class="media-body overflow-hidden">
+                                        <p class="text-truncate font-size-14 mb-2">Sales Revenue</p>
+                                        <h4 class="mb-0">$ 38452</h4>
+                                    </div>
+                                    <div class="text-primary">
+                                        <i class="ri-store-2-line font-size-24"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body border-top py-3">
+                                <div class="text-truncate">
+                                    <span class="badge badge-soft-success font-size-11"><i class="mdi mdi-menu-up"> </i> 2.4% </span>
+                                    <span class="text-muted ml-2">From previous period</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="media">
+                                    <div class="media-body overflow-hidden">
+                                        <p class="text-truncate font-size-14 mb-2">Average Price</p>
+                                        <h4 class="mb-0">$ 15.4</h4>
+                                    </div>
+                                    <div class="text-primary">
+                                        <i class="ri-briefcase-4-line font-size-24"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body border-top py-3">
+                                <div class="text-truncate">
+                                    <span class="badge badge-soft-success font-size-11"><i class="mdi mdi-menu-up"> </i> 2.4% </span>
+                                    <span class="text-muted ml-2">From previous period</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+
+            
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+
+    </div> <!-- container-fluid -->
 </div>
+<!-- End Page-content -->
