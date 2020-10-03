@@ -98,7 +98,18 @@ $this->title = 'My Yii Application';
                 </div>
                 <!-- end row -->
 
-            
+                <div class="card">
+                    <div class="card-body">
+                        <div class="float-right d-none d-md-inline-block">
+                            <div class="btn-group mb-2">
+                                <button type="button" class="btn btn-sm btn-light">Today</button>
+                                <button type="button" class="btn btn-sm btn-light active">Weekly</button>
+                                <button type="button" class="btn btn-sm btn-light">Monthly</button>
+                            </div>
+                        </div>
+                       
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
