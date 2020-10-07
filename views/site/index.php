@@ -4,9 +4,9 @@
 
 $this->title = 'My Yii Application';
 ?>
- <div class="main-content">
 
-<div class="page-content">
+
+
     <div class="container-fluid">
 
         <!-- start page title -->
@@ -116,5 +116,4 @@ $this->title = 'My Yii Application';
         <!-- end row -->
 
     </div> <!-- container-fluid -->
-</div>
 <!-- End Page-content -->

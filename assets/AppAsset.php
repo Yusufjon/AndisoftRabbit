@@ -20,9 +20,10 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
- 
-      "frontasset/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css",    
-        "frontasset/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css",       
+ "https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css",
+
+      "frontasset/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css",
+        "frontasset/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css",
        "frontasset/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css",
         "frontasset/css/bootstrap.min.css",
        "frontasset/css/icons.min.css",
@@ -30,7 +31,7 @@ class AppAsset extends AssetBundle
                        
     ];
     public $js = [
-   "frontasset/libs/jquery/jquery.min.js",
+  "https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js",
    "frontasset/libs/bootstrap/js/bootstrap.bundle.min.js",
    "frontasset/libs/metismenu/metisMenu.min.js",
    "frontasset/libs/simplebar/simplebar.min.js",
@@ -44,12 +45,8 @@ class AppAsset extends AssetBundle
    "frontasset/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js",
    "frontasset/js/app.js",
 
-
-
-
-
-  
     ];
+
     public $depends = [
         'yii\web\YiiAsset',
       
