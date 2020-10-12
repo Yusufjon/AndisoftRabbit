@@ -31,7 +31,7 @@ class UserProfile extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_balance', 'user_parent_id','user_id'], 'integer'],
+            [['user_balance', 'user_parent_id','user_id','user_rabbit_quantity'], 'integer'],
             [['user_address', 'user_mobile', 'user_photo'], 'string', 'max' => 255],
         ];
     }
@@ -50,4 +50,10 @@ class UserProfile extends \yii\db\ActiveRecord
             'user_photo' => 'User Photo',
         ];
     }
+
+    public function getUserInfo()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
+    }
+
 }

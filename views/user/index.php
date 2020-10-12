@@ -17,6 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Yangi foydalanuvchi yaratish', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Diller  foydalanuvchi yaratish', ['diller-create-user'], ['class' => 'btn btn-warning']) ?>
     </p>
 
 

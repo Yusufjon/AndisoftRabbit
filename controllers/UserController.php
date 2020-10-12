@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\LoginLogs;
 use app\models\User;
 use app\models\UserProfile;
+use app\models\UserProfit;
 use app\models\UserRoleChangeLogs;
 use Yii;
 use app\models\UserModel;
@@ -85,6 +86,45 @@ class UserController extends Controller
             'model' => $model,
         ]);
     }
+
+    public function actionDillerCreateUser()
+    {
+        $model = new UserModel();
+
+        $settings = (new \yii\db\Query())
+            ->from('settings')
+            ->one();
+
+        if ($model->load($post = Yii::$app->request->post()) /*&& $model->save()*/) {
+            $model->role = 4;
+            $model->password = Yii::$app->getSecurity()->generatePasswordHash($model->password);
+            $model->save(false);
+            $userProfile = new UserProfile();
+            $userProfile->user_id = $model->id;
+            $userProfile->user_parent_id = (!empty($post['user_parent'])?$post['user_parent']:0);
+            $userProfile->user_rabbit_quantity = $post['rabbit_quantity'];
+            $userProfile->save(false);
+            UserProfit::writeRoot($model->id);
+
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+
+
+        return $this->render('diller_create_user', [
+            'model' => $model,
+            'settings' => $settings,
+        ]);
+    }
+
+    public function actionGetRabbitPrice()
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $settings = (new \yii\db\Query())
+            ->from('settings')
+            ->one();
+        return $settings;
+    }
+
 
     /**
      * Updates an existing UserModel model.

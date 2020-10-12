@@ -44,6 +44,7 @@ class AppAsset extends AssetBundle
    "frontasset/libs/datatables.net-responsive/js/dataTables.responsive.min.js",
    "frontasset/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js",
    "frontasset/js/app.js",
+   "//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js",
 
     ];
 

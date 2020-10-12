@@ -40,7 +40,7 @@ $users = \app\models\User::find()->where(['status'=>10])->all();
         <?php endif; ?>
 
         <div class="col-md-6">
-            <?= $form->field($model, 'role')->dropDownList(\yii\helpers\ArrayHelper::map(\app\models\Roles::find()->all(), 'id', 'name'), array('prompt'=>'Foydalanuvchi xuquqi')) ?>
+            <?= $form->field($model, 'role')->hiddenInput(['value'=>4])->label(false) ?>
 
         </div>
         <div class="col-md-12">
@@ -54,10 +54,7 @@ $users = \app\models\User::find()->where(['status'=>10])->all();
                 <option value="<?=$user->id?>"><?=$user->fullname?></option>
                 <?php endforeach; ?>
             </select>
-
         </div>
-
-
     </div>
 
     <br>

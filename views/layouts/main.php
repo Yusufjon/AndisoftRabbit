@@ -12,6 +12,8 @@ use app\assets\AppAsset;
 use yii\helpers\Url;
 use yii\web\JqueryAsset;
 AppAsset::register($this);
+$balance = \app\models\UserProfile::findOne(['user_id' => Yii::$app->user->id]);
+$checkBalance = (!empty($balance->user_balance) ? number_format($balance->user_balance) : 0) ?>
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -63,11 +65,13 @@ AppAsset::register($this);
                 </button>
 
 
-                <div class="dropdown dropdown-mega d-none d-lg-block ml-2">
-                    <button type="button" class="btn header-item waves-effect" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
-                       Hisob: 2500 UZS
-                    </button>
 
+                <div class="dropdown dropdown-mega d-none d-lg-block ml-2">
+                    <a href="#">
+                    <button type="button" class="btn header-item waves-effect"  aria-haspopup="false" aria-expanded="false">
+                       Hisob: <?=$checkBalance?> UZS
+                    </button>
+                    </a>
                 </div>
 
                     </div>
@@ -87,7 +91,7 @@ AppAsset::register($this);
                     <a class="dropdown-item d-block" href="#"><span class="badge badge-success float-right mt-1">11</span><i class="ri-settings-2-line align-middle mr-1"></i> Settings</a>
                     <a class="dropdown-item" href="#"><i class="ri-lock-unlock-line align-middle mr-1"></i> Lock screen</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-danger" href="#"><i class="ri-shut-down-line align-middle mr-1 text-danger"></i> Logout</a>
+                    <a class="dropdown-item text-danger" data-method="post" href="<?=Url::to(['site/logout'])?>"><i class="ri-shut-down-line align-middle mr-1 text-danger"></i> Logout</a>
                 </div>
             </div>
                 </div>
@@ -152,6 +156,12 @@ AppAsset::register($this);
     .help-block {
         color:red;
         font-weight: bold;
+    }
+    .text-menu {
+        color:white;
+        font-size: 2em;
+        font-weight: bold;
+        margin-left: 15px;
     }
 </style>
 <?php $this->endBody() ?>
