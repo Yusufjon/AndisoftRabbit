@@ -116,6 +116,18 @@ class SiteController extends Controller
         ]);
     }
 
+
+
+public function funds(){
+    return $this->render('funds');
+}
+
+
+
+
+
+
+
     /**
      * Displays about page.
      *

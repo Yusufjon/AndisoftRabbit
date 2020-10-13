@@ -14,6 +14,11 @@ $config = [
     'components' => [
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
+
+            'formatter' => [
+                'class' => 'yii\i18n\Formatter',
+                'nullDisplay' => '0',
+            ],
             // uncomment if you want to cache RBAC items hierarchy
             // 'cache' => 'cache',
         ],

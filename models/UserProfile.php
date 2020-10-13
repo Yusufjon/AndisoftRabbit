@@ -43,11 +43,12 @@ class UserProfile extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'user_balance' => 'User Balance',
+            'user_balance' => 'Summa',
             'user_address' => 'User Address',
             'user_mobile' => 'User Mobile',
             'user_parent_id' => 'User Parent ID',
             'user_photo' => 'User Photo',
+            'user_id'=>'Foydalanuvchi',
         ];
     }
 
