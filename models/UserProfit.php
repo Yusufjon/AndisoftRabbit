@@ -68,11 +68,11 @@ class UserProfit extends \yii\db\ActiveRecord
             ->one();
 
         if ($checkUser->user_parent_id != 0) {
-            $study_fee = $settings['rabbit_price'];
+            $study_fee = $settings['study_fee'];
             $profit = array(
-                'twenty'=>($study_fee*20)/100,
-                'ten'=>($study_fee*10)/100,
-                'five'=>($study_fee*5)/100,
+                'twenty'=>$study_fee*20/100,
+                'ten'=>$study_fee*10/100,
+                'five'=>$study_fee*5/100,
             );
 
            #  -----------------Level 1 -------------------------------------------

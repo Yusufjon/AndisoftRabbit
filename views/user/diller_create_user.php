@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-$users = \app\models\User::find()->where(['status'=>10])->all();
+$users = \app\models\User::find()->where(['status'=>10])->andWhere(['role'=>4])->andWhere(['status'=>10])->all();
 /* @var $this yii\web\View */
 /* @var $model app\models\UserModel */
 /* @var $form yii\widgets\ActiveForm */

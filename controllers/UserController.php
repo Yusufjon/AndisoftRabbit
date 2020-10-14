@@ -62,6 +62,21 @@ class UserController extends Controller
         ]);
     }
 
+
+    public function actionDillerView($id)
+    {
+        $userParentHierachy = UserProfit::findAll(['taken_user_id'=>$id]);
+        $settings = (new \yii\db\Query())
+            ->from('settings')
+            ->one();
+
+        return $this->render('diller_view', [
+            'model' => $this->findModel($id),
+            'userParentHierachy' => $userParentHierachy,
+            'settings' => $settings,
+        ]);
+    }
+
     /**
      * Creates a new UserModel model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -106,7 +121,7 @@ class UserController extends Controller
             $userProfile->save(false);
             UserProfit::writeRoot($model->id);
 
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['diller-view', 'id' => $model->id]);
         }
 
 
