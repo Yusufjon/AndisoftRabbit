@@ -32,7 +32,7 @@ $(document).ready(function(){
 </script>
 <input style="width:270px;float:right" class="form-control" id="myInput" type="text" placeholder="Qidirish..."><br/>
 <br/>
-<table class="table table-bordered">
+<table class="table table-borderless">
 
   <thead class="thead-dark">
     <tr>
@@ -47,9 +47,9 @@ $(document).ready(function(){
   <tbody id="myTable">
   <?php foreach($model as $model):?>
     <tr>
-      <th scope="row"><?=$model->userInfo->fullname?></th>
-      <td><?=(!empty($model->user_balance))?$model->user_balance:0?> so'm</td>
-      <td style="text-align:center"><?= Html::a('Hisobni to\'ldirish', ['create','id' => $model->id], ['class' => 'btn btn-warning btn-sm']) ?>   </td>
+      <td ><?=$model->userInfo->fullname?></th>
+      <td ><?=(!empty($model->user_balance))?$model->user_balance:0?> so'm</td>
+      <td ><?= Html::a('Hisobni to\'ldirish', ['create','id' => $model->id], ['class' => 'btn btn-warning btn-sm']) ?>   </td>
      
     </tr>
  <?php endforeach?>
