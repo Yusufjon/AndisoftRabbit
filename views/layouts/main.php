@@ -69,7 +69,9 @@ $checkBalance = (!empty($balance->user_balance) ? number_format($balance->user_b
                 <div class="dropdown dropdown-mega d-none d-lg-block ml-2">
                     <a href="#">
                     <button type="button" class="btn header-item waves-effect"  aria-haspopup="false" aria-expanded="false">
+                      <?php if(Yii::$app->user->identity->role !=1): ?>
                        Hisob: <?=$checkBalance?> UZS
+                        <?php endif; ?>
                     </button>
                     </a>
                 </div>
@@ -132,6 +134,20 @@ $checkBalance = (!empty($balance->user_balance) ? number_format($balance->user_b
             <!-- Left Sidebar End -->
     <div class="main-content">
         <div class="page-content">
+            <?php
+            $flash = Yii::$app->session->getAllFlashes();
+            if (!empty($flash)) :
+                foreach ($flash as $type => $message) :
+                    $js = <<<JS
+        Swal.fire({
+          type: "{$type}",
+          title: "{$message}",
+        })
+JS;
+                    $this->registerJs($js, \yii\web\View::POS_LOAD);
+                endforeach;
+            endif; ?>
+
             <?= $content ?>
         </div>
     </div>
@@ -140,11 +156,11 @@ $checkBalance = (!empty($balance->user_balance) ? number_format($balance->user_b
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6">
-                    <script>document.write(new Date().getFullYear())</script> © Nazox.
+                    <script>document.write(new Date().getFullYear())</script> © Andisoft
                 </div>
                 <div class="col-sm-6">
                     <div class="text-sm-right d-none d-sm-block">
-                        Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesdesign
+                        G'ulomjon Sulaymonov tomonidan yaratildi <i class="mdi mdi-heart text-danger"></i>
                     </div>
                 </div>
             </div>

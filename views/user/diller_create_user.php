@@ -97,12 +97,12 @@ $users = \app\models\User::find()->where(['status'=>10])->andWhere(['role'=>4])-
 
     <br>
     <div class="form-group">
-        <?= Html::submitButton('Saqlash', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Saqlash', ['class' => 'btn btn-success','id'=>'send']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
 
-
+<div id="test"></div>
 
 </div>
 
@@ -112,7 +112,7 @@ $users = \app\models\User::find()->where(['status'=>10])->andWhere(['role'=>4])-
     });
 
     $(document).ready(function(){
-        $("#rabbit_amount").keyup(function(){
+        $("#rabbit_amount").on('keyup change', function (){
             var calculate=null;
             var value = $(this).val();
             var study_fee = null;
@@ -128,8 +128,30 @@ $users = \app\models\User::find()->where(['status'=>10])->andWhere(['role'=>4])-
                     // console.log(study_fee)
                 }
             });
+
+            $.ajax({
+                url: '<?php echo Yii::$app->request->baseUrl. '/user-profile/get-user-balance' ?>',
+                type: 'post',
+                data:{
+                    user_id :<?=Yii::$app->user->id?>
+                },
+                success: function (data) {
+                    if(calculate>data) {
+                        $('#send').css({'display':'none'});
+                        console.log('katta');
+                        Swal.fire({
+                            type: "warning",
+                            title: "Sizda yetarli mablag' mavjud emas!",
+                        })
+                    } else {
+                        $('#send').css({'display':''});
+                    }
+
+                }
+            });
         });
     });
+
 </script>
 
 

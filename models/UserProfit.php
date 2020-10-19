@@ -74,7 +74,9 @@ class UserProfit extends \yii\db\ActiveRecord
                 'ten'=>$study_fee*10/100,
                 'five'=>$study_fee*5/100,
             );
-
+            $percentage = 0;
+            /*diller uchun*/
+            $percentage+=5;
            #  -----------------Level 1 -------------------------------------------
             $userProfile_level_1 = UserProfile::findOne(['user_id'=>$checkUser->user_parent_id]);
             $userProfit = new UserProfit();
@@ -85,8 +87,21 @@ class UserProfit extends \yii\db\ActiveRecord
             $userProfit->is_registered = 1;
             $userProfit->summa = $profit['twenty'];
             $userProfit->profit_percentage = 20;
+            $percentage+=20;
             $userProfit->level = 1;
             $userProfit->save(false);
+            /*balanceni qoshib qoyish*/
+            $userProfile = UserProfile::findOne(['user_id'=>$userProfile_level_1->user_id]);
+            $userProfile->user_balance += $profit['twenty'];
+            $userProfile->save(false);
+            /* paymentlarni istoriyaga yozib qoyish*/
+            $moneyReport = new UserMoneyReports();
+            $moneyReport->user_id =$userProfile_level_1->user_id;
+            $moneyReport->balance = $profit['twenty'];
+            $moneyReport->time = date('Y-m-d');
+            $moneyReport->is_income = 1;
+            $moneyReport->description = "Yangi ro'yxattan o'tgan foydalanuvchidan 20% o'tdi";
+            $moneyReport->save(false);
 
 
         #  -----------------Level 2 -------------------------------------------
@@ -102,8 +117,21 @@ class UserProfit extends \yii\db\ActiveRecord
             $userProfit->is_registered = 1;
             $userProfit->summa = $profit['ten'];
             $userProfit->profit_percentage = 10;
+            $percentage+=10;
             $userProfit->level = 2;
             $userProfit->save(false);
+            /*balanceni qoshib qoyish*/
+            $userProfile = UserProfile::findOne(['user_id'=>$userProfile_level2->user_id]);
+            $userProfile->user_balance+= $profit['ten'];
+            $userProfile->save(false);
+            /* paymentlarni istoriyaga yozib qoyish*/
+            $moneyReport = new UserMoneyReports();
+            $moneyReport->user_id =$userProfile_level2->user_id;
+            $moneyReport->balance = $profit['ten'];
+            $moneyReport->time = date('Y-m-d');
+            $moneyReport->is_income = 1;
+            $moneyReport->description = "Yangi ro'yxattan o'tgan foydalanuvchidan 10% o'tdi";
+            $moneyReport->save(false);
         }
 
         # -----------------Level 3 -------------------------------------------
@@ -119,8 +147,21 @@ class UserProfit extends \yii\db\ActiveRecord
             $userProfit->is_registered = 1;
             $userProfit->summa = $profit['ten'];
             $userProfit->profit_percentage = 10;
+            $percentage+=10;
             $userProfit->level = 3;
             $userProfit->save(false);
+            /*balanceni qoshib qoyish*/
+            $userProfile = UserProfile::findOne(['user_id'=>$userProfile_level3->user_id]);
+            $userProfile->user_balance+= $profit['ten'];
+            $userProfile->save(false);
+            /* paymentlarni istoriyaga yozib qoyish*/
+            $moneyReport = new UserMoneyReports();
+            $moneyReport->user_id =$userProfile_level3->user_id;
+            $moneyReport->balance = $profit['ten'];
+            $moneyReport->time = date('Y-m-d');
+            $moneyReport->is_income = 1;
+            $moneyReport->description = "Yangi ro'yxattan o'tgan foydalanuvchidan 10% o'tdi";
+            $moneyReport->save(false);
         }
             # -----------------Level 4 -------------------------------------------
             $userProfile_level_4 = UserProfile::find()->where(['user_id' => $userProfile_level3->user_parent_id])->exists();
@@ -134,8 +175,21 @@ class UserProfit extends \yii\db\ActiveRecord
                 $userProfit->is_registered = 1;
                 $userProfit->summa = $profit['five'];
                 $userProfit->profit_percentage = 5;
+                $percentage+=5;
                 $userProfit->level = 4;
                 $userProfit->save(false);
+                /*balanceni qoshib qoyish*/
+                $userProfile = UserProfile::findOne(['user_id'=>$userProfile_level4->user_id]);
+                $userProfile->user_balance+= $profit['five'];
+                $userProfile->save(false);
+                /* paymentlarni istoriyaga yozib qoyish*/
+                $moneyReport = new UserMoneyReports();
+                $moneyReport->user_id =$userProfile_level4->user_id;
+                $moneyReport->balance = $profit['five'];
+                $moneyReport->time = date('Y-m-d');
+                $moneyReport->is_income = 1;
+                $moneyReport->description = "Yangi ro'yxattan o'tgan foydalanuvchidan 5% o'tdi";
+                $moneyReport->save(false);
             }
 
             # -----------------Level 5 -------------------------------------------
@@ -150,8 +204,21 @@ class UserProfit extends \yii\db\ActiveRecord
                 $userProfit->is_registered = 1;
                 $userProfit->summa = $profit['five'];
                 $userProfit->profit_percentage = 5;
+                $percentage+=5;
                 $userProfit->level = 4;
                 $userProfit->save(false);
+                /*balanceni qoshib qoyish*/
+                $userProfile = UserProfile::findOne(['user_id'=>$userProfile_level5->user_id]);
+                $userProfile->user_balance+= $profit['five'];
+                $userProfile->save(false);
+                /* paymentlarni istoriyaga yozib qoyish*/
+                $moneyReport = UserMoneyReports::findOne(['user_id'=>$userProfile_level5->user_id]);
+                $moneyReport->user_id =$userProfile_level5->user_id;
+                $moneyReport->balance = $profit['five'];
+                $moneyReport->time = date('Y-m-d');
+                $moneyReport->is_income = 1;
+                $moneyReport->description = "Yangi ro'yxattan o'tgan foydalanuvchidan 5% o'tdi";
+                $moneyReport->save(false);
             }
 
             # -----------------Level 6 -------------------------------------------
@@ -166,10 +233,24 @@ class UserProfit extends \yii\db\ActiveRecord
                 $userProfit->is_registered = 1;
                 $userProfit->summa = $profit['five'];
                 $userProfit->profit_percentage = 5;
+                $percentage+=5;
                 $userProfit->level = 4;
                 $userProfit->save(false);
+                /*balanceni qoshib qoyish*/
+                $userProfile = UserProfile::findOne(['user_id'=>$userProfile_level_6->user_id]);
+                $userProfile->user_balance+= $profit['five'];
+                $userProfile->save(false);
+                /* paymentlarni istoriyaga yozib qoyish*/
+                $moneyReport = new UserMoneyReports();
+                $moneyReport->user_id =$userProfile_level6->user_id;
+                $moneyReport->balance = $profit['five'];
+                $moneyReport->time = date('Y-m-d');
+                $moneyReport->is_income = 1;
+                $moneyReport->description = "Yangi ro'yxattan o'tgan foydalanuvchidan 5% o'tdi";
+                $moneyReport->save(false);
             }
 
         }
+        return  $percentage;
     }
 }

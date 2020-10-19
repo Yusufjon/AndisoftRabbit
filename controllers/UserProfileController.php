@@ -2,6 +2,7 @@
 
 
 namespace app\controllers;
+use app\models\UserMoneyReports;
 use Yii;
 use app\models\UserProfile;
 use yii\data\ActiveDataProvider;
@@ -79,23 +80,30 @@ class UserProfileController extends Controller
     // }
 
 
-    public function actionCreate($id)
+    public function actionRefillBalance($id)
     {
-        $model = new UserProfile();
-        $funds = new Funds();
-        $model = $this->findModel($id);
+        $UserProfile = new UserProfile();
+        $funds = new UserMoneyReports();
+        $model =UserProfile::findOne(['user_id'=>$id]);
 
 
         if ($model->load(Yii::$app->request->post())) 
         {
-            $model->save();
+            /*adding balance*/
+            $model->user_balance += $model->temp_user_balance;
+            $model->save(false);
 
-            /*add same field in employee table*/
-            $funds->attributes = $model->attributes;
-            $funds->save();
-
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else 
+            /*keeping history*/
+            $funds->user_id = $model->user_id;
+            $funds->balance = $model->temp_user_balance;
+            $funds->is_income = 1;
+            $funds->time = date('Y-m-d');
+            $funds->description = 'Admin tomonidan o\'tkazildi';
+            $funds->save(false);
+            Yii::$app->session->setFlash('success-alert', "Mablag' o'tkazildi!");
+            return $this->redirect(['user-profile/']);
+        }
+        else
         {
             return $this->render('create', [
                 'model' => $model,
@@ -103,6 +111,16 @@ class UserProfileController extends Controller
             ]);
         }
     }
+
+        public function actionGetUserBalance()
+        {
+            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            $data = Yii::$app->request->post();
+            $user_id = $data['user_id'];
+            $balance = UserProfile::findOne(['user_id'=>$user_id]);
+            return $balance->user_balance;
+        }
+
 
 
 

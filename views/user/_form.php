@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 $users = \app\models\User::find()->where(['status'=>10])->all();
+$roles = \app\models\Roles::find()->all();
 /* @var $this yii\web\View */
 /* @var $model app\models\UserModel */
 /* @var $form yii\widgets\ActiveForm */
@@ -40,7 +41,7 @@ $users = \app\models\User::find()->where(['status'=>10])->all();
         <?php endif; ?>
 
         <div class="col-md-6">
-            <?= $form->field($model, 'role')->hiddenInput(['value'=>4])->label(false) ?>
+            <?= $form->field($model, 'role')->dropDownList(\yii\helpers\ArrayHelper::map($roles,'id','name')) ?>
 
         </div>
         <div class="col-md-12">
@@ -67,8 +68,6 @@ $users = \app\models\User::find()->where(['status'=>10])->all();
 </div>
 
 <script>
-
-
     $(document).ready(function(){
         $("#usermodel-role").change(function(){
             var selectedCountry = $(this).children("option:selected").val();
@@ -85,6 +84,7 @@ $users = \app\models\User::find()->where(['status'=>10])->all();
             }
         });
     });
+
 
     $(document).ready(function() {
         $('.js-example-basic-single').select2();

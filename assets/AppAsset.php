@@ -20,15 +20,16 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
- "https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css",
-
+     "https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css",
       "frontasset/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css",
         "frontasset/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css",
        "frontasset/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css",
         "frontasset/css/bootstrap.min.css",
        "frontasset/css/icons.min.css",
-       "frontasset/css/app.min.css",
-                       
+        "frontasset/css/app.min.css",
+        "frontasset/css/sweetalert2.min.css",
+        "https://cdn.jsdelivr.net/g/sweetalert2@6.6.0(sweetalert2.min.css+sweetalert2.css)",
+
     ];
     public $js = [
   "https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js",
@@ -43,8 +44,10 @@ class AppAsset extends AssetBundle
    "frontasset/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js",
    "frontasset/libs/datatables.net-responsive/js/dataTables.responsive.min.js",
    "frontasset/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js",
-   "frontasset/js/app.js",
+        "frontasset/js/app.js",
+        "frontasset/js/sweetalert2.min.js",
    "//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js",
+        "https://cdn.jsdelivr.net/g/sweetalert2@6.6.0(sweetalert2.min.js+sweetalert2.js)",
 
     ];
 

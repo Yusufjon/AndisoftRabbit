@@ -119,7 +119,14 @@ class UserController extends Controller
             $userProfile->user_parent_id = (!empty($post['user_parent'])?$post['user_parent']:0);
             $userProfile->user_rabbit_quantity = $post['rabbit_quantity'];
             $userProfile->save(false);
-            UserProfit::writeRoot($model->id);
+              $percentage =  UserProfit::writeRoot($model->id);
+              $study_fee_percentage = $settings['study_fee']*$percentage/100;
+
+            /*dillerni balansidan ayrib yuborish*/
+            $dillerBalance = UserProfile::findOne(['user_id'=>Yii::$app->user->id]);
+            $rabbit_fee = $post['rabbit_quantity']*$settings['rabbit_price']+$study_fee_percentage;
+            $dillerBalance->user_balance-= $rabbit_fee;
+            $dillerBalance->save(false);
 
             return $this->redirect(['diller-view', 'id' => $model->id]);
         }

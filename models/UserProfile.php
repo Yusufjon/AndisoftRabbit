@@ -14,6 +14,7 @@ use Yii;
  * @property string|null $user_mobile
  * @property int|null $user_parent_id
  * @property string|null $user_photo
+
  */
 class UserProfile extends \yii\db\ActiveRecord
 {
@@ -24,6 +25,7 @@ class UserProfile extends \yii\db\ActiveRecord
     {
         return 'user_profile';
     }
+    public $temp_user_balance;
 
     /**
      * {@inheritdoc}
@@ -31,7 +33,7 @@ class UserProfile extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_balance', 'user_parent_id','user_id','user_rabbit_quantity'], 'integer'],
+            [['user_balance', 'user_parent_id','user_id','user_rabbit_quantity','temp_user_balance'], 'integer'],
             [['user_address', 'user_mobile', 'user_photo'], 'string', 'max' => 255],
         ];
     }
@@ -44,6 +46,7 @@ class UserProfile extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'user_balance' => 'Summa',
+            'temp_user_balance' => 'Summa',
             'user_address' => 'User Address',
             'user_mobile' => 'User Mobile',
             'user_parent_id' => 'User Parent ID',
