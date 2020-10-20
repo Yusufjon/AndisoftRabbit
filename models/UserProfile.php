@@ -34,7 +34,7 @@ class UserProfile extends \yii\db\ActiveRecord
     {
         return [
             [['user_balance', 'user_parent_id','user_id','user_rabbit_quantity','temp_user_balance'], 'integer'],
-            [['user_address', 'user_mobile', 'user_photo'], 'string', 'max' => 255],
+            [['user_address','user_city', 'user_mobile', 'user_photo'], 'string', 'max' => 255],
         ];
     }
 

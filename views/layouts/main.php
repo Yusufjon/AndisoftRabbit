@@ -81,14 +81,15 @@ $checkBalance = (!empty($balance->user_balance) ? number_format($balance->user_b
             <div class="dropdown d-inline-block user-dropdown">
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="frontasset/images/users/avatar-2.jpg"
+                    <img class="rounded-circle header-profile-user" src="<?=Yii::$app->homeUrl?>frontasset/images/users/avatar-2.jpg"
                          alt="Header Avatar">
-                    <span class="d-none d-xl-inline-block ml-1">Kevin</span>
+                         <?php $name = app\models\UserProfile::find()->one()?>
+                    <span class="d-none d-xl-inline-block ml-1"><?=$name->userInfo->fullname?></span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <!-- item-->
-                    <a class="dropdown-item" href="#"><i class="ri-user-line align-middle mr-1"></i> Profile</a>
+                    <a class="dropdown-item" href="<?=\yii\helpers\Url::to(['cabinet/index','id'=>$user_id])?>"><i class="ri-user-line align-middle mr-1"></i> Profile</a>
                     <a class="dropdown-item" href="#"><i class="ri-wallet-2-line align-middle mr-1"></i> My Wallet</a>
                     <a class="dropdown-item d-block" href="#"><span class="badge badge-success float-right mt-1">11</span><i class="ri-settings-2-line align-middle mr-1"></i> Settings</a>
                     <a class="dropdown-item" href="#"><i class="ri-lock-unlock-line align-middle mr-1"></i> Lock screen</a>
