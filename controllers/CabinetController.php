@@ -68,9 +68,9 @@ class CabinetController extends Controller{
 
 
 
-public function actionIndex(){
-    $user_id = $data['user_id'];
-    $client = UserProfile::find()->One();
+public function actionIndex($id){
+    $client = UserProfile::findone(['user_id'=>$id]);
+  
 
      return $this->render('index', [
         'dataProvider' => $dataProvider,

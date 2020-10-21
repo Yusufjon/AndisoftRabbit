@@ -1,6 +1,7 @@
 
 <?php
 $client = \app\models\UserProfile::find()->all();
+
 use yii\helpers\Html;
 use yii\grid\GridView;
 $this->title = 'Mijoz ma\'lumotlari';
@@ -32,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <tr>
                     
                         <td><?php for($i=0;$i<=$client->id;$i++);?></td>
-                        <td><a href="#"><img style="width:8%;height:12%" src="images/avatar.jpg" class="avatar" alt="Avatar"> <?=$client->userInfo->fullname?></a></td>
+                        <td><a href="<?=yii\helpers\Url::to(['cabinet/index','id'=>$client->user_id])?>"><i class="fa fa-user"> <?=$client->userInfo->fullname?></i></a></td>
                        
                         <td>04/10/2013</td>                        
                         <td><?=(!empty($client->user_rabbit_quantity))?$client->user_rabbit_quantity:0?> ta</td>

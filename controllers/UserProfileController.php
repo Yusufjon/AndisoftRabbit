@@ -184,10 +184,12 @@ class UserProfileController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = UserProfile::findOne($id)) !== null) {
+        if (($model = \app\models\UserProfile::find()->where(['id'=>$id,'status'=>'active'])->one()) !== null) {
             return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
         }
-
-        throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+     
 }

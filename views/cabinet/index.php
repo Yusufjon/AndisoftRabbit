@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="col-md-4">
                         <div class="profile-img">
                        <!-- <img src="   <?=Yii::$app->homeUrl?>images/avatar.jpg" alt=""/> -->
-                         <img style="border-radius:60%" src="<?=Yii::$app->homeUrl?>uploads/<?=(!empty($client->user_photo))?$client->user_photo:0?>" alt=""/> 
+                         <img style="border-radius:60%" src="<?=Yii::$app->homeUrl?>uploads/<?=(!empty($client->user_photo))?$client->user_photo:'/images/avatar1.jpg'?>" alt=""/> 
                             
                         </div>
                         
