@@ -4,6 +4,10 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\User;
+use app\models\UserProfile;
+use app\controllers\UserProfileController;
+
 $this->title = 'Shaxsiy kabinet';
 $this->params['breadcrumbs'][] = $this->title;
 
@@ -14,8 +18,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                       <img src="   <?=Yii::$app->homeUrl?>images/avatar.jpg" alt=""/>
-                        <!--     <img src="images/<?=(!empty($client->user_photo))?$client->user_photo:0?>" alt=""/> -->
+                       <!-- <img src="   <?=Yii::$app->homeUrl?>images/avatar.jpg" alt=""/> -->
+                         <img style="border-radius:60%" src="<?=Yii::$app->homeUrl?>uploads/<?=(!empty($client->user_photo))?$client->user_photo:0?>" alt=""/> 
                             
                         </div>
                         
@@ -39,22 +43,28 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                       
+                   
+                    <?= Html::a('Tahrirlash', ['user-profile/update','id' => $client->id], ['class' => 'btn btn-primary btn-sm']) ?>   
+                    
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-work">
-                     
+                      
+                
                         </div>
-                    </div>
+                        </div>
+
+                    
                     <div class="col-md-8">
                         <div class="tab-content profile-tab" id="myTabContent">
-                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div style="border-bottom:1px solid #f8f8f8 " class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                         <div class="row">
                                         
                                         </div>
-                                        <div class="row">
+                                        <div style="border-bottom:1px solid #f8f8f8 "  class="row">
                                             <div class="col-md-6">
                                                 <label>Ism-sharifi</label>
                                             </div>
@@ -62,23 +72,23 @@ $this->params['breadcrumbs'][] = $this->title;
                                                 <p><?=$client->userInfo->fullname?></p>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        <div style="border-bottom:1px solid #f8f8f8 "  class="row">
                                             <div class="col-md-6">
                                            <label> Hisob raqami</label>
                                             </div>
                                             <div class="col-md-6">
-                                            <p><?=(!empty($client->user_balance))?$client->user_balance:0?></p>
+                                            <p><?=(!empty($client->user_balance))?$client->user_balance:0?> so'm</p>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
+                                        <div style="border-bottom:1px solid #f8f8f8 "  class="row">
+                                            <div  class="col-md-6">
                                                 <label>Tel raqami</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <p><?=(!empty($client->user_mobile))?$client->user_mobile:0?></p>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        <div style="border-bottom:1px solid #f8f8f8 "  class="row">
                                             <div class="col-md-6">
                                                 <label>Viloyat</label>
                                             </div>
@@ -86,7 +96,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                 <p><?=(!empty($client->user_address))?$client->user_address:0?></p>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        <div style="border-bottom:1px solid #f8f8f8 "  class="row">
                                             <div class="col-md-6">
                                                 <label>Shahar(tuman)</label>
                                             </div>
@@ -96,7 +106,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         </div>
                                       
 
-                                        <div class="row">
+                                        <div style="border-bottom:1px solid #f8f8f8 "  class="row">
                                             <div class="col-md-6">
                                                 <label>Jami quyonlar soni</label>
                                             </div>
@@ -118,7 +128,7 @@ $this->params['breadcrumbs'][] = $this->title;
      
         <style>    
         body{
-
+            background: -webkit-linear-gradient(left, #3931af, #00c6ff);
 }
 .emp-profile{
     padding: 3%;
@@ -135,7 +145,7 @@ $this->params['breadcrumbs'][] = $this->title;
     padding-top:0px;
 }
 .profile-img img{
-    width: 70%;
+    width: 50%;
     height: 100%;
 }
 .profile-img .file {

@@ -39,12 +39,12 @@ use yii\helpers\Url;
             </a>
         </li>
 
-        <li>
+        <!-- <li>
             <a href="<?=Url::to(['cabinet/'])?>" class=" waves-effect">
                 <i class="fa fa-user"></i>
                 <span>Foydalanuvchi kabineti</span>
             </a>
-        </li>
+        </li> -->
 
    
 

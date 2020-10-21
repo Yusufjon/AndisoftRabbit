@@ -34,7 +34,8 @@ class UserProfile extends \yii\db\ActiveRecord
     {
         return [
             [['user_balance', 'user_parent_id','user_id','user_rabbit_quantity','temp_user_balance'], 'integer'],
-            [['user_address','user_city', 'user_mobile', 'user_photo'], 'string', 'max' => 255],
+            [['user_address','user_city', 'user_mobile'], 'string', 'max' => 255],
+            [['user_photo'], 'file',  'extensions' => ['png','jpg','jpeg']],
         ];
     }
 
@@ -47,14 +48,23 @@ class UserProfile extends \yii\db\ActiveRecord
             'id' => 'ID',
             'user_balance' => 'Summa',
             'temp_user_balance' => 'Summa',
-            'user_address' => 'User Address',
-            'user_mobile' => 'User Mobile',
+            'user_address' => 'Viloyatingiz',
+            'user_city' => 'Shahringiz',
+            'user_mobile' => 'Mobil raqamingiz',
             'user_parent_id' => 'User Parent ID',
-            'user_photo' => 'User Photo',
+            'user_photo' => 'Rasm yuklash',
             'user_id'=>'Foydalanuvchi',
         ];
     }
-
+    public function upload()
+    {
+        if ($this->validate() and $this->user_photo->baseName) {
+            $this->user_photo->saveAs(Yii::$app->basePath.'\uploads/' . $this->user_photo->baseName . '.' . $this->user_photo->extension);
+            return true;
+        } else {
+            return false;
+        }
+    }
     public function getUserInfo()
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);

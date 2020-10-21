@@ -81,9 +81,10 @@ $checkBalance = (!empty($balance->user_balance) ? number_format($balance->user_b
             <div class="dropdown d-inline-block user-dropdown">
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="<?=Yii::$app->homeUrl?>frontasset/images/users/avatar-2.jpg"
+                        <?php $name = app\models\UserProfile::find()->one()?>
+                    <img class="rounded-circle header-profile-user" src="<?=Yii::$app->homeUrl?>uploads/<?=$name->user_photo?>"
                          alt="Header Avatar">
-                         <?php $name = app\models\UserProfile::find()->one()?>
+                       
                     <span class="d-none d-xl-inline-block ml-1"><?=$name->userInfo->fullname?></span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>

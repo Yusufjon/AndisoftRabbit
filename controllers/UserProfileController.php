@@ -11,6 +11,8 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\Funds;
 use app\controllers\FundsController;
+use yii\web\UploadedFile;
+
 
 /**
  * UserProfileController implements the CRUD actions for UserProfile model.
@@ -53,12 +55,7 @@ class UserProfileController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
+  
 
     /**
      * Creates a new UserProfile model.
@@ -135,13 +132,32 @@ class UserProfileController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $user_photo = $model->user_photo;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->save()) {
+                $model->user_photo = UploadedFile::getInstance($model, 'user_photo');
+                if ($model->user_photo and $model->upload()) {
+                    $model->user_photo = $model->user_photo->baseName.'.'.$model->user_photo->extension;
+                    $model->save();
+                }else{
+                    $model->user_photo = $user_photo;
+                    $model->save();
+                }
+            }
             return $this->redirect(['view', 'id' => $model->id]);
-        }
 
-        return $this->render('update', [
-            'model' => $model,
+           }else {
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    public function actionView($id)
+    {
+        return $this->render('view', [
+            'model' => $this->findModel($id),
         ]);
     }
 
