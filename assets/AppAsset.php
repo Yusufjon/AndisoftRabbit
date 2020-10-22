@@ -29,6 +29,8 @@ class AppAsset extends AssetBundle
         "frontasset/css/app.min.css",
         "frontasset/css/sweetalert2.min.css",
         "https://cdn.jsdelivr.net/g/sweetalert2@6.6.0(sweetalert2.min.css+sweetalert2.css)",
+       "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css",
+             "/resources/demos/style.css",
 
     ];
     public $js = [
@@ -48,6 +50,8 @@ class AppAsset extends AssetBundle
         "frontasset/js/sweetalert2.min.js",
    "//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js",
         "https://cdn.jsdelivr.net/g/sweetalert2@6.6.0(sweetalert2.min.js+sweetalert2.js)",
+     "https://code.jquery.com/jquery-1.12.4.js",
+      "https://code.jquery.com/ui/1.12.1/jquery-ui.js",
 
     ];
 

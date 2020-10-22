@@ -11,6 +11,76 @@ $data = \app\models\UserProfile::find()->one();
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
+
+
+<script type="text/javascript"> 
+    var tags = [  
+    "Delhi", 
+    "Ahemdabad", 
+    "Punjab", 
+    "Uttar Pradesh", 
+    "Himachal Pradesh", 
+    "Karnatka", 
+    "Kerela", 
+    "Maharashtra", 
+    "Gujrat", 
+    "Rajasthan", 
+    "Bihar", 
+    "Tamil Nadu", 
+    "Haryana" 
+      ]; 
+  
+      /*list of available options*/ 
+     var n= tags.length; //length of datalist tags     
+  
+     function ac(value) { 
+        document.getElementById('datalist').innerHTML = ''; 
+         //setting datalist empty at the start of function 
+         //if we skip this step, same name will be repeated 
+           
+         l=value.length; 
+         //input query length 
+     for (var i = 0; i<n; i++) { 
+         if(((tags[i].toLowerCase()).indexOf(value.toLowerCase()))>-1) 
+         { 
+             //comparing if input string is existing in tags[i] string 
+  
+             var node = document.createElement("option"); 
+             var val = document.createTextNode(tags[i]); 
+              node.appendChild(val); 
+  
+               document.getElementById("datalist").appendChild(node); 
+                   //creating and appending new elements in data list 
+             } 
+         } 
+     } 
+   
+</script> 
+
+<!-- On keyup calls the function everytime a key is released -->
+<datalist id="datalist"> 
+  
+<option value="Delhi"></option> 
+<option value="Ahemdabad"></option> 
+<option value="Punjab"></option> 
+<option value="Uttar Pradesh"></option> 
+<option value="Himachal Pradesh"></option> 
+<option value="Karnatka"></option> 
+<option value="Kerela"></option> 
+<option value="Maharashtra"></option> 
+<option value="Gujrat"></option> 
+<option value="Rajasthan"></option> 
+<option value="Bihar"></option> 
+<option value="Tamil Nadu"></option> 
+<option value="Haryana"></option> 
+  
+<!-- This data list will be edited through javascript     -->
+</datalist> 
+
+
+
+
+
 <div class="row">
     <div class="col-xs-12 col-md-12">
         <div class="panel panel-default">
@@ -40,12 +110,14 @@ $data = \app\models\UserProfile::find()->one();
                         </div>
                         <div class="col-xs-3 col-md-3">
                             <div class="form-group">
-                                <?= $form->field($model, 'user_address')->textInput(['placeholder'=>'Viloyat']) ?>
+                                <?= $form->field($model, 'user_address')->dropDownList([ 'Andijon' => 'Andijon', 'Namangan' => 'Namangan', 'Farg\'ona' => 'Farg\'ona', 'Toshkent shahri' => 'Toshkent Shahri', 'Toshkent viloyati' => 'Toshkent viloyati', 'Sirdaryo' => 'Sirdaryo', 'Jizzah' => 'Jizzah', 'Samarkand' => 'Samarkand', 'Buxoro' => 'Buxoro','Qashqadaryo' => 'Qashqadaryo','Surxondaryo' => 'Surxondaryo', 'Navoiy' => 'Navoiy', 'Xorazm' => 'Xorazm','Qoraqalpog\'ston Respublikasi' => 'Qoraqalpog\'ston Respublikasi'], ['prompt' => '']) ?>
                             </div>
                         </div>
                         <div class="col-xs-3 col-md-3">
                             <div class="form-group">
-                                <?= $form->field($model, 'user_city')->textInput(['placeholder'=>'Shahar(tuman)']) ?>
+                             <?= $form->field($model, 'user_city')->textInput(['placeholder'=>'Shahar(tuman)']) ?>
+                             
+                            
                             </div>
                         </div>
 
@@ -80,14 +152,10 @@ $data = \app\models\UserProfile::find()->one();
 
 
 
-
-
-
-
-
 <style>
     body { margin-top:20px; }
     .panel-title {display: inline;font-weight: bold;}
     .checkbox.pull-right { margin: 0; }
     .pl-ziro { padding-left: 0px; }
 </style>
+

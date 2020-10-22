@@ -46,14 +46,16 @@ class UserProfile extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'user_balance' => 'Summa',
+            'user_balance' => 'Hisobdagi mablag\'',
             'temp_user_balance' => 'Summa',
             'user_address' => 'Viloyatingiz',
-            'user_city' => 'Shahringiz',
+            'user_city' => 'Shahringiz(tuman)',
             'user_mobile' => 'Mobil raqamingiz',
             'user_parent_id' => 'User Parent ID',
             'user_photo' => 'Rasm yuklash',
             'user_id'=>'Foydalanuvchi',
+            'userInfo.fullname'=>'FISH',
+            'user_rabbit_quantity'=>'Jami quyonlar soni',
         ];
     }
     public function upload()
