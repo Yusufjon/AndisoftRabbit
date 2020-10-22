@@ -133,7 +133,7 @@ class UserProfileController extends Controller
     {
         $model = $this->findModel($id);
         $user_photo = $model->user_photo;
-
+        $client = UserProfile::findone(['user_id'=>$id]);
         if ($model->load(Yii::$app->request->post())) {
             if ($model->save()) {
                 $model->user_photo = UploadedFile::getInstance($model, 'user_photo');
@@ -145,7 +145,7 @@ class UserProfileController extends Controller
                     $model->save();
                 }
             }
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $id]);
 
            }else {
             return $this->render('update', [
@@ -184,7 +184,7 @@ class UserProfileController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = \app\models\UserProfile::find()->where(['id'=>$id,'status'=>'active'])->one()) !== null) {
+        if (($model = \app\models\UserProfile::find()->where(['id'=>$id])->one()) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
